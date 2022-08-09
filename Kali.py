@@ -1,11 +1,11 @@
 import discord
 import random
 import os
-import asyncio
 import keep_alive
+# import asyncio
 # from dotenv import load_dotenv
-from discord import app_commands
-from discord.ext import commands
+# from discord import app_commands
+# from discord.ext import commands
 # load_dotenv()
 
 TOKEN = os.environ['TOKEN']
