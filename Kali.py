@@ -3,12 +3,12 @@ import random
 import os
 import asyncio
 import keep_alive
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from discord import app_commands
 from discord.ext import commands
-load_dotenv()
+# load_dotenv()
 
-TOKEN = os.getenv("TOKEN")
+TOKEN = os.environ['TOKEN']
 L1 = ['謹慎行事', '此時不要提出過多要求', '不要急於決定', '儘早行動',
       '冷靜下來', '轉移你的注意力', '等一等', '你的行為將會改善這件事']
 L2 = ['我愛你', '你最棒了']
