@@ -2,6 +2,7 @@ import discord
 import random
 import os
 import asyncio
+import keep_alive
 from dotenv import load_dotenv
 from discord import app_commands
 from discord.ext import commands
@@ -123,6 +124,6 @@ async def on_message(message):
                 # await message.channel.send('再說一次')
     if message.content == '咖哩、想你':
         await message.channel.send('與其花時間想我，不如花時間在妳的事業與未來上…不過，我不討厭就是了')
-# client.run(
-#     os.getenv('TOKEN'))
+
+keep_alive.keep_alive()
 client.run(TOKEN)
