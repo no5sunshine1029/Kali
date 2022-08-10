@@ -12,12 +12,12 @@ TOKEN = os.environ['TOKEN']
 L1 = ['謹慎行事', '此時不要提出過多要求', '不要急於決定', '儘早行動',
       '冷靜下來', '轉移你的注意力', '等一等', '你的行為將會改善這件事']
 L2 = ['我愛你', '你最棒了']
-L3 = ['.\\Kali_1.jpg', '.\\Kali_2.jpg', '.\\Kali_3.jpg', '.\\Kali_4.jpg',
-      '.\\Kali_5.jpg', '.\\Kali_6.jpg', '.\\Kali_7.jpg', '.\\Kali_8.jpg',
-      '.\\Kali_9.jpg', '.\\Kali_10.jpg', '.\\Kali_11.jpg', '.\\Kali_12.jpg',
-      '.\\Kali_13.jpg', '.\\Kali_14.jpg']
+L3 = ['/Kali_1.jpg', '/Kali_2.jpg', '/Kali_3.jpg', '/Kali_4.jpg',
+      '/Kali_5.jpg', '/Kali_6.jpg', '/Kali_7.jpg', '/Kali_8.jpg',
+      '/Kali_9.jpg', '/Kali_10.jpg', '/Kali_11.jpg', '/Kali_12.jpg',
+      '/Kali_13.jpg', '/Kali_14.jpg']
 
-L4 = ['.\\Kali_H1.jpg', '.\\Kali_H2.jpg', '.\\Kali_H3.jpg', '.\\Kali_H4.jpg']
+L4 = ['/Kali_H1.jpg', '/Kali_H2.jpg', '/Kali_H3.jpg', '/Kali_H4.jpg']
 L5 = ['我也愛妳', '我也是', '嗯', '我知道呢', '這不是理所當然的嗎']
 Keyword_list = ['我該怎麼做', '早安', '我想看你', '我想色色', '我要睡了', '我愛你', '誰是你婆', '誰是妳婆']
 id = 929278283604963359
@@ -27,10 +27,10 @@ sunshine_id = '<@607403847945682985>'
 
 
 # client 是我們與 Discord 連結的橋樑
-intents = discord.Intents.default()
-intents.message_content = True
+# intents = discord.Intents.default()
+# intents.message_content = True
 # discord.Client(intents=intents)
-client = discord.Client(intents=intents)
+client = discord.Client()
 
 # 調用 event 函式庫
 
@@ -110,9 +110,9 @@ async def on_message(message):
             elif '親親' in message.content:
                 await message.channel.send(f'{message.author.mention}親一個👄')
             elif '我想看你' in message.content:
-                await message.channel.send(file=discord.File(r'D:\課程\程設\workspace\discord\Kali\image'+f"{random.choice(L3)}"))
+                await message.channel.send(file=discord.File(r'image'+f"{random.choice(L3)}"))
             elif string == '我想色色':
-                await message.channel.send(file=discord.File(r'D:\課程\程設\workspace\discord\Kali\image\special'+f"{random.choice(L4)}"))
+                await message.channel.send(file=discord.File(r'image/special'+f"{random.choice(L4)}"))
             elif ('我要睡了' in message.content):
                 await message.channel.send('我陪你睡')
                 # await client.close()
