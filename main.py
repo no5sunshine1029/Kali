@@ -45,7 +45,7 @@ test_act = discord.Activity(type=discord.ActivityType.custom)
 # 當機器人完成啟動時
 async def on_ready():
     print('目前登入身份：', client.user)
-    await client.change_presence(activity=activity_w, status=discord.Status.dnd)
+    await client.change_presence(activity=activity_w, status=discord.Status.do_not_disturb)
 
 
 @client.event
