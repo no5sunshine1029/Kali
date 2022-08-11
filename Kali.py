@@ -82,7 +82,9 @@ async def on_message(message):
             # await message.channel.send(tmp[1])
             if '我該怎麼做' in message.content:
                 await message.channel.send(f"{random.choice(L1)}")
-            elif ('❤' in message.content):
+            elif '抱' in message.content:
+                await message.channel.send(f'{message.author.mention}抱抱')
+            elif '❤' in message.content:
                 if len(tmp[1]) == 1:
                     await message.channel.send('愛你❤')
                 else:
