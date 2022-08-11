@@ -27,10 +27,10 @@ sunshine_id = '<@607403847945682985>'
 
 
 # client 是我們與 Discord 連結的橋樑
-# intents = discord.Intents.default()
-# intents.message_content = True
+intents = discord.Intents.default()
+intents.message_content = True
 # discord.Client(intents=intents)
-client = discord.Client()
+client = discord.Client(intents=intents)
 
 # 調用 event 函式庫
 
