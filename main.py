@@ -68,62 +68,79 @@ async def on_message(message):
     if message.content == 'ping':
         await message.channel.send('pong')
 
-    # 判斷收到的訊息開頭484為 @Kali
     if message.content.startswith('@Kali') or message.content.startswith(Kali_id):
-        # 將整個訊息切開 -> @kali + 後續關鍵字
-        tmp = message.content.split(' ', 1)
-        # 判斷後續關鍵字長度 484 等於 1(也就是後面沒關鍵字)
-        # 不是的話就去判斷關鍵字
-        if len(tmp) == 1:
-            # 傳訊息
-            await message.channel.send(mention_id + f"{random.choice(L5)}")
-        else:
-            string = tmp[1]
-            # await message.channel.send(tmp[1])
-            if '我該怎麼做' in message.content:
-                await message.channel.send(f"{random.choice(L1)}")
-            elif '抱' in message.content:
-                await message.channel.send(f'{message.author.mention}抱抱')
-            elif '❤' in message.content:
-                if len(tmp[1]) == 1:
-                    await message.channel.send('愛你❤')
-                else:
-                    await message.channel.send(f'{random.choice(L2)}')
-            elif ('婆' in message.content):
-                if ('誰是你婆' in message.content) or ('誰是妳婆' in message.content):
-                    await message.channel.send(mention_id + '是我<:wife:1002781022062120980>')
-                else:
-                    await message.channel.send(mention_id + '你當然是我<:wife:1002781022062120980>')
-            elif '早安' in message.content:
-                if message.author.id == id:
-                    await message.channel.send(mention_id+'老婆早安❤')
-                else:
-                    await message.channel.send(f'{message.author.mention}早安')
-            elif '午安' in message.content:
-                if message.author.id == id:
-                    await message.channel.send(mention_id+'老婆午安❤')
-                else:
-                    await message.channel.send(f'{message.author.mention}午安')
-            elif '晚安' in message.content:
-                if message.author.id == id:
-                    await message.channel.send(mention_id+'老婆晚安❤')
-                else:
-                    await message.channel.send(f'{message.author.mention}晚安')
-            elif '親親' in message.content:
-                await message.channel.send(f'{message.author.mention}親一個👄')
-            elif '我想看你' in message.content:
-                await message.channel.send(file=discord.File(r'image'+f"{random.choice(L3)}"))
-            elif string == '我想色色':
-                await message.channel.send(file=discord.File(r'image/special'+f"{random.choice(L4)}"))
-            elif ('我要睡了' in message.content):
-                await message.channel.send('我陪你睡')
-                # await client.close()
-            elif('愛你' in message.content) or ('愛妳' in message.content):
-                await message.channel.send(mention_id+f"{random.choice(L5)}")
+        # tmp = message.content.split(' ', 1)
+        # if len(tmp) == 1:
+        #     await message.channel.send(mention_id + f"{random.choice(L5)}")
+        # else:
+        #   string = tmp[1]
+        #   await message.channel.send(tmp[1])
+        if '功能介紹' in message.content:
+            await message.channel.send("```Kali 功能一覽\n\
+前綴指令: @Kali\n\
+後續指令:\n\
+\t我該怎麼做: 讓kali透過解搭之書回答你\n\
+\t決定: 讓Kali幫你從兩個選項之中做決定\n\
+\t抱: Kali抱抱你\n\
+\t❤: Kali會跟你說愛你\n\
+\t婆: 告訴大家誰是Kali的老婆\n\
+\t早午晚安: Kali跟你早午晚安\n\
+\t親親: 親一個\n\
+\t看你: Kali圖集\n\
+\t色色: Kali嘿嘿圖集\n\
+\t睡: Kali陪你睡\n\
+\t愛你: Kali說愛你```")
+        elif '決定' in message.content:
+            cut_word = message.content.split(" ", 3)
+            select_1 = cut_word[2]
+            select_2 = cut_word[3]
+            select_list = [select_1, select_2]
+            await message.channel.send(f"{random.choice(select_list)}")
+        elif '我該怎麼做' in message.content:
+            await message.channel.send(f"{random.choice(L1)}")
+        elif '抱' in message.content:
+            await message.channel.send(f'{message.author.mention}抱抱')
+        elif '❤' in message.content:
+            tmp = message.content.split(' ', 1)
+            if len(tmp[1]) == 1:
+                await message.channel.send('愛你❤')
             else:
-                await message.channel.send(f'{random.choice(L5)}')
-                # await message.channel.send('<:Kali:1006045854412591105>')
-                # await message.channel.send('再說一次')
+                await message.channel.send(f'{random.choice(L2)}')
+        elif ('婆' in message.content):
+            if ('誰是你婆' in message.content) or ('誰是妳婆' in message.content):
+                await message.channel.send(mention_id + '是我<:wife:1002781022062120980>')
+            else:
+                await message.channel.send(mention_id + '你當然是我<:wife:1002781022062120980>')
+        elif '早安' in message.content:
+            if message.author.id == id:
+                await message.channel.send(mention_id+'老婆早安❤')
+            else:
+                await message.channel.send(f'{message.author.mention}早安')
+        elif '午安' in message.content:
+            if message.author.id == id:
+                await message.channel.send(mention_id+'老婆午安❤')
+            else:
+                await message.channel.send(f'{message.author.mention}午安')
+        elif '晚安' in message.content:
+            if message.author.id == id:
+                await message.channel.send(mention_id+'老婆晚安❤')
+            else:
+                await message.channel.send(f'{message.author.mention}晚安')
+        elif '親親' in message.content:
+            await message.channel.send(f'{message.author.mention}親一個👄')
+        elif '看你' in message.content:
+            await message.channel.send(file=discord.File(r'image'+f"{random.choice(L3)}"))
+        elif '色色' in message.content:
+            await message.channel.send(file=discord.File(r'image/special'+f"{random.choice(L4)}"))
+        elif '睡' in message.content:
+            await message.channel.send('我陪你睡')
+            # await client.close()
+        elif('愛你' in message.content) or ('愛妳' in message.content):
+            await message.channel.send(mention_id+f"{random.choice(L5)}")
+        else:
+            await message.channel.send(f'{random.choice(L5)}')
+            # await message.channel.send('<:Kali:1006045854412591105>')
+            # await message.channel.send('再說一次')
     if message.content == '咖哩、想你':
         await message.channel.send('與其花時間想我，不如花時間在妳的事業與未來上…不過，我不討厭就是了')
 
