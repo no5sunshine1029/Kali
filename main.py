@@ -20,6 +20,22 @@ L3 = ['/Kali_1.jpg', '/Kali_2.jpg', '/Kali_3.jpg', '/Kali_4.jpg',
 L4 = ['/Kali_H1.jpg', '/Kali_H2.jpg', '/Kali_H3.jpg', '/Kali_H4.jpg']
 L5 = ['我也愛妳', '我也是', '嗯', '我知道呢', '這不是理所當然的嗎']
 Keyword_list = ['我該怎麼做', '早安', '我想看你', '我想色色', '我要睡了', '我愛你', '誰是你婆', '誰是妳婆']
+
+
+patch_note = "```Kali 功能一覽\n\
+前綴指令: @ Kali\n\
+後續指令: \n\
+\t我該怎麼做: 讓kali透過解答之書回答你\n\
+\t決定: 讓Kali幫你從兩個選項之中做決定\n\
+\t抱: Kali抱抱你\n\
+\t❤: Kali會跟你說愛你\n\
+\t婆: 告訴大家誰是Kali的老婆\n\
+\t早午晚安: Kali跟你早午晚安\n\
+\t親親: 親一個\n\
+\t看你: Kali圖集\n\
+\t色色: Kali嘿嘿圖集\n\
+\t睡: Kali陪你睡\n\
+\t愛你: Kali說愛你```"
 id = 929278283604963359
 mention_id = '<@929278283604963359>'
 Kali_id = '<@1004755297514029133>'
@@ -76,20 +92,7 @@ async def on_message(message):
         #   string = tmp[1]
         #   await message.channel.send(tmp[1])
         if '功能介紹' in message.content:
-            await message.channel.send("```Kali 功能一覽\n\
-前綴指令: @Kali\n\
-後續指令:\n\
-\t我該怎麼做: 讓kali透過解搭之書回答你\n\
-\t決定: 讓Kali幫你從兩個選項之中做決定\n\
-\t抱: Kali抱抱你\n\
-\t❤: Kali會跟你說愛你\n\
-\t婆: 告訴大家誰是Kali的老婆\n\
-\t早午晚安: Kali跟你早午晚安\n\
-\t親親: 親一個\n\
-\t看你: Kali圖集\n\
-\t色色: Kali嘿嘿圖集\n\
-\t睡: Kali陪你睡\n\
-\t愛你: Kali說愛你```")
+            await message.channel.send(patch_note)
         elif '決定' in message.content:
             cut_word = message.content.split(" ", 3)
             select_1 = cut_word[2]
