@@ -83,7 +83,8 @@ async def on_message(message):
     # 如果包含 ping，機器人回傳 pong
     if message.content == 'ping':
         await message.channel.send('pong')
-
+    if mention_id in message.content:
+        await message.channel.send(f'{message.author.mention}找我老婆幹嘛?')
     if message.content.startswith('@Kali') or message.content.startswith(Kali_id):
         # tmp = message.content.split(' ', 1)
         # if len(tmp) == 1:
