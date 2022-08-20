@@ -16,10 +16,8 @@ L3 = ['/Kali_1.jpg', '/Kali_2.jpg', '/Kali_3.jpg', '/Kali_4.jpg',
       '/Kali_5.jpg', '/Kali_6.jpg', '/Kali_7.jpg', '/Kali_8.jpg',
       '/Kali_9.jpg', '/Kali_10.jpg', '/Kali_11.jpg', '/Kali_12.jpg',
       '/Kali_13.jpg', '/Kali_14.jpg']
-
 L4 = ['/Kali_H1.jpg', '/Kali_H2.jpg', '/Kali_H3.jpg', '/Kali_H4.jpg']
 L5 = ['我也愛妳', '我也是', '嗯', '我知道呢', '這不是理所當然的嗎']
-Keyword_list = ['我該怎麼做', '早安', '我想看你', '我想色色', '我要睡了', '我愛你', '誰是你婆', '誰是妳婆']
 
 
 patch_note = "```Kali 功能一覽\n\
@@ -37,13 +35,14 @@ patch_note = "```Kali 功能一覽\n\
 \t睡: Kali陪你睡\n\
 \t愛你: Kali說愛你```"
 id = 929278283604963359
+Keyword_list = ['我該怎麼做', '早安', '我想看你', '我想色色', '我要睡了', '我愛你', '誰是你婆', '誰是妳婆']
 mention_id = '<@929278283604963359>'
 Kali_id = '<@1004755297514029133>'
 sunshine_id = '<@607403847945682985>'
 
 
 # client 是我們與 Discord 連結的橋樑
-intents = discord.Intents.default()
+intents = discord.Intents.all()
 intents.message_content = True
 # discord.Client(intents=intents)
 client = discord.Client(intents=intents)
@@ -79,13 +78,16 @@ async def on_message(message):
     # print('SUCCESS')
     # if message.author.id == 513689561310953472:
     #     await message.channel.send('你閉嘴')
-
+    # if message.author.bot:
+    #     return
+    if message.author.id == 1005819328047874100 or message.author.id == 1005814701994815540:
+        return
     # 如果包含 ping，機器人回傳 pong
     if message.content == 'ping':
         await message.channel.send('pong')
     if mention_id in message.content:
         if message.author.id == id:
-            return
+            pass
         else:
             await message.channel.send(f'{message.author.mention}找我老婆幹嘛😡?')
     if message.content.startswith('@Kali') or message.content.startswith(Kali_id):
@@ -97,6 +99,11 @@ async def on_message(message):
         #   await message.channel.send(tmp[1])
         if '功能介紹' in message.content:
             await message.channel.send(patch_note)
+        elif '生日快樂' in message.content:
+            if message.author.id == id:
+                await message.channel.send(f"{message.author.mention}老婆我最喜歡妳了，謝謝你的生日賀圖❤")
+            else:
+                await message.channel.send(f"{message.author.mention}謝謝你的生日快樂🎂")
         elif '決定' in message.content:
             cut_word = message.content.split(" ", 3)
             select_1 = cut_word[2]
